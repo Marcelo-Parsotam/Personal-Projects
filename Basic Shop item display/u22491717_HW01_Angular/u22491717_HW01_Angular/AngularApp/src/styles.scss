@@ -1,0 +1,17 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, darkpurple, black) !important; /* Force the gradient */
+    color: white; /* Ensure text is visible on dark background */
+    min-height: 100vh;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }

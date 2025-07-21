@@ -1,0 +1,20 @@
+<!--container that holds the html for the edit page-->
+<div class="container mt-4">
+    <h1>Edit Product</h1>
+    <form [formGroup]="productForm" (ngSubmit)="onSave()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" class="form-control" formControlName="name" />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" class="form-control" formControlName="description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" type="number" class="form-control" formControlName="price" />
+      </div>
+      <button type="submit" class="btn btn-primary me-2" [disabled]="!productForm.valid">Save</button>
+      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
