@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/workouts"></ion-back-button> <!-- Back button to navigate to workouts -->
+    </ion-buttons>
+    <ion-title>{{ workout?.title || 'Workout Details' }}</ion-title> <!-- Page title -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="workout">
+  <!-- Card displaying workout details -->
+  <ion-card class="workout-card">
+    <ion-card-header>
+      <ion-card-title>{{ workout.title }}</ion-card-title> <!-- Workout title -->
+      <ion-card-subtitle>{{ workout.description }}</ion-card-subtitle> <!-- Workout description -->
+    </ion-card-header>
+    
+    <ion-card-content>
+      <!-- Button to toggle workout completion status -->
+      <ion-button expand="block" (click)="toggleCompleted()" [color]="completed ? 'success' : 'primary'">
+        <ion-icon slot="start" [name]="completed ? 'checkmark-circle' : 'checkmark-circle-outline'"></ion-icon>
+        {{ completed ? 'Completed' : 'Mark as Complete' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- List of exercises in the workout -->
+  <ion-list class="exercises-list">
+    <ion-list-header>
+      <ion-label>Exercises</ion-label> <!-- Section header -->
+    </ion-list-header>
+    
+    <!-- Display each exercise -->
+    <ion-item *ngFor="let exercise of workout.exercises">
+      <ion-icon slot="start" [name]="getExerciseIcon(exercise.name)" color="primary"></ion-icon> <!-- Exercise icon -->
+      <ion-label>
+        <h3>{{ exercise.name }}</h3> <!-- Exercise name -->
+        <p>Duration: {{ exercise.duration }}</p> <!-- Exercise duration -->
+        <p>Equipment: {{ exercise.equipment }}</p> <!-- Exercise equipment -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/workouts"></ion-back-button> <!-- Back button to navigate to workouts -->
+    </ion-buttons>
+    <ion-title>My Progress</ion-title> <!-- Page title -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Card displaying workout completion progress -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Workout Completion</ion-card-title> <!-- Section title -->
+    </ion-card-header>
+    
+    <ion-card-content>
+      <!-- Progress bar showing percentage of completed workouts -->
+      <ion-progress-bar [value]="progressPercentage / 100" color="primary"></ion-progress-bar>
+      
+      <!-- Text displaying the number of completed workouts -->
+      <ion-text class="ion-text-center">
+        <p>{{ completedWorkouts.length }} of {{ totalWorkouts }} workouts completed</p>
+        <h2>{{ progressPercentage | number:'1.0-0' }}%</h2> <!-- Percentage of progress -->
+      </ion-text>
+      
+      <!-- Button to reset progress -->
+      <ion-button expand="block" color="danger" (click)="resetProgress()" class="ion-margin-top">
+        Reset Progress
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- List of completed workouts -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Completed Workouts</ion-label> <!-- Section header -->
+    </ion-list-header>
+    
+    <!-- Display each completed workout -->
+    <ion-item *ngFor="let workout of completedWorkouts">
+      <ion-avatar slot="start">
+        <ion-icon name="fitness" size="large"></ion-icon> <!-- Icon for the workout -->
+      </ion-avatar>      
+      <ion-label>
+        <h3>{{ workout.title }}</h3> <!-- Workout title -->
+        <p>{{ workout.description }}</p> <!-- Workout description -->
+      </ion-label>
+    </ion-item>
+    
+    <!-- Message if no workouts are completed -->
+    <ion-item *ngIf="completedWorkouts.length === 0">
+      <ion-label class="ion-text-center">
+        <p>No workouts completed yet</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

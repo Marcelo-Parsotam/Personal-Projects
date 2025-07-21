@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button> <!-- Back button -->
+    </ion-buttons>
+    <ion-title>GetFit - Sign Up</ion-title> <!-- Page title -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="signup-container">
+    <ion-img src="assets/images/logo.webp" class="logo"></ion-img> <!-- App logo -->
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Create Your Account</ion-card-title> <!-- Greeting message -->
+      </ion-card-header>
+      
+      <ion-card-content>
+        <!-- Full Name input field -->
+        <ion-item>
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        
+        <!-- Email input field -->
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        
+        <!-- Password input field -->
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        
+        <!-- Age input field -->
+        <ion-item>
+          <ion-label position="floating">Age</ion-label>
+          <ion-input type="number" [(ngModel)]="age"></ion-input>
+        </ion-item>
+        
+        <!-- Fitness Level dropdown -->
+        <ion-item>
+          <ion-label>Fitness Level</ion-label>
+          <ion-select [(ngModel)]="fitnessLevel" interface="popover">
+            <ion-select-option value="Beginner">Beginner</ion-select-option>
+            <ion-select-option value="Intermediate">Intermediate</ion-select-option>
+            <ion-select-option value="Advanced">Advanced</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- Signup button -->
+        <ion-button expand="block" (click)="signup()" class="ion-margin-top">
+          Create Account
+        </ion-button>
+
+        <!-- Link to login page -->
+        <ion-text class="ion-text-center ion-margin-top">
+          <p>Already have an account? 
+            <a tabindex="0" (click)="navigateToLogin()" (keyup.enter)="navigateToLogin()" 
+               aria-label="Go to login page">Login</a>
+          </p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

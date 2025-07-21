@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button> <!-- Back button to navigate to login -->
+    </ion-buttons>
+    <ion-title>Workout Programs</ion-title> <!-- Page title -->
+    <ion-buttons slot="end">
+      <!-- Stats Button - Icon Only -->
+      <ion-button (click)="navigateToProgress()" aria-label="View Progress">
+        <ion-icon name="stats-chart"></ion-icon> <!-- Icon for progress -->
+      </ion-button>
+      
+      <!-- Logout Button - Icon Only -->
+      <ion-button (click)="logout()" aria-label="Logout">
+        <ion-icon name="log-out"></ion-icon> <!-- Icon for logout -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Pull-to-refresh functionality -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Search bar for filtering workouts -->
+  <ion-searchbar 
+    placeholder="Search workouts" 
+    (ionChange)="filterWorkouts($event)"
+    debounce="300">
+  </ion-searchbar>
+  
+  <!-- List of workouts -->
+  <ion-list>
+    <ion-item *ngFor="let workout of filteredWorkouts" (click)="viewDetails(workout.id)">
+      <ion-icon slot="start" name="fitness" color="primary"></ion-icon> <!-- Icon for workout -->
+      <ion-label>
+        <h2>{{ workout.title }}</h2> <!-- Workout title -->
+        <p>{{ workout.description }}</p> <!-- Workout description -->
+      </ion-label>
+      <ion-badge *ngIf="isCompleted(workout.id)" slot="end" color="success">
+        Completed <!-- Badge for completed workouts -->
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

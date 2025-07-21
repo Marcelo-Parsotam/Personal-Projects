@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>GetFit - Login</ion-title> <!-- Page title -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <ion-img src="assets/images/logo.webp" class="logo"></ion-img> <!-- App logo -->
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Welcome Back!</ion-card-title> <!-- Greeting message -->
+      </ion-card-header>
+      
+      <ion-card-content>
+        <!-- Email input field -->
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        
+        <!-- Password input field -->
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        
+        <!-- Login button -->
+        <ion-button expand="block" (click)="login()" class="ion-margin-top">
+          Login
+        </ion-button>
+        
+        <!-- Link to signup page -->
+        <ion-text class="ion-text-center ion-margin-top">
+          <p>Don't have an account? 
+            <a tabindex="0" (click)="navigateToSignup()" (keyup.enter)="navigateToSignup()" 
+               aria-label="Go to signup page">Sign up</a>
+          </p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
